@@ -12,7 +12,10 @@
     },
     "tauri": {
         "allowlist": {
-            "all": true
+            "all": true,
+            "fs": {
+                "scope": ["$TEMP/*"]
+            }
         },
         "bundle": {
             "active": true,
@@ -29,7 +32,7 @@
                 "icons/icon.icns",
                 "icons/icon.ico"
             ],
-            "identifier": "com.tauri.dev",
+            "identifier": "be.simonloir.ez-invoice",
             "longDescription": "",
             "macOS": {
                 "entitlements": null,
