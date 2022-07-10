@@ -22,6 +22,10 @@ export default class Router extends Component {
         route: '/',
     };
 
+    setRoute(route: string) {
+        this.setState({ route });
+    }
+
     render(): ReactNode {
         let screen: ReactNode = <>404 - The requested route does not exist</>;
         switch (this.state.route) {
