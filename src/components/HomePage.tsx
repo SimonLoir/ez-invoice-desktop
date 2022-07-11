@@ -1,15 +1,20 @@
-import { fs, os } from '@tauri-apps/api';
-import { invoke } from '@tauri-apps/api/tauri';
-import defaultTemplate from '../templates/default';
+import { useDatabase } from './App';
 
 export default function HomePage() {
+    const db = useDatabase();
     return (
         <>
             <section>
                 <h2>Bienvenue</h2>
                 <p>Bienvenue sur EZ-invoice !</p>
-                <button
-                    onClick={async () => {
+                <button onClick={() => {}}>test</button>
+            </section>
+        </>
+    );
+}
+
+/*
+async () => {
                         console.log();
                         try {
                             const tmp = (await os.tempdir()) + '/ezbiz/';
@@ -44,11 +49,5 @@ export default function HomePage() {
                         }
                         const r = await invoke('print_pdf');
                         console.log(r);
-                    }}
-                >
-                    test
-                </button>
-            </section>
-        </>
-    );
-}
+                    }
+                    */

@@ -14,8 +14,8 @@ export function useRouter() {
 }
 
 export default class Router extends Component {
-    get name() {
-        return 'hello';
+    get route() {
+        return this.state.route;
     }
 
     state: Readonly<RouterState> = {
