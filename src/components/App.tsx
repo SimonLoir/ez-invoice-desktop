@@ -88,7 +88,8 @@ export default function App({ children }: { children?: React.ReactNode }) {
                     <nav>
                         <Link route='/'>Accueil</Link>
                         <Link route='/test'>Déclaration TVA</Link>
-                        <Link route='/test'>Mes factures</Link>
+                        <Link route='/test'>Factures</Link>
+                        <Link route='/test'>Contacts</Link>
                         <span>
                             <b>{user?.e_name}</b>
                         </span>
