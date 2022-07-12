@@ -1,5 +1,6 @@
 import { Component, createContext, ReactNode, useContext } from 'react';
 import App from './components/App';
+import ContactsPage from './components/ContactsPage';
 import HomePage from './components/HomePage';
 
 interface RouterState {
@@ -31,6 +32,10 @@ export default class Router extends Component {
         switch (this.state.route) {
             case '/':
                 screen = <HomePage />;
+                break;
+
+            case '/contacts':
+                screen = <ContactsPage />;
                 break;
 
             default:

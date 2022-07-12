@@ -89,7 +89,7 @@ export default function App({ children }: { children?: React.ReactNode }) {
                         <Link route='/'>Accueil</Link>
                         <Link route='/test'>Déclaration TVA</Link>
                         <Link route='/test'>Factures</Link>
-                        <Link route='/test'>Contacts</Link>
+                        <Link route='/contacts'>Contacts</Link>
                         <span>
                             <b>{user?.e_name}</b>
                         </span>

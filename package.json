@@ -13,6 +13,7 @@
         "@types/react-dom": "^18.0.6",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
+        "react-nl2br": "^1.0.4",
         "react-scripts": "5.0.1",
         "sass": "^1.53.0",
         "tauri-plugin-sql-api": "github:tauri-apps/tauri-plugin-sql#bc3b71047905ba06354468a216369efb497e8d90",

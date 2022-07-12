@@ -1,3 +1,7 @@
+function nl2br(str: string) {
+    return str.replace(/\n/, '<br />');
+}
+
 export default function defaultTemplate({
     lang,
     title,
@@ -82,7 +86,7 @@ export default function defaultTemplate({
                                     <% if(c_name != c_enterprise_name) { }
                                     <span>${c_name}</span><br />
                                     <% } }
-                                    <span><%- c_addr }</span><br />
+                                    <span>${nl2br(c_addr)}</span><br />
                                     <p>TVA : ${c_vat_number}</p>
                                 </div>
                             </div>
