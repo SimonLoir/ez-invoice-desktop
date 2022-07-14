@@ -2,6 +2,7 @@ import { Component, createContext, ReactNode, useContext } from 'react';
 import App from './components/App';
 import ContactsPage from './components/ContactsPage';
 import HomePage from './components/HomePage';
+import VATPage from './components/VATPage';
 
 interface RouterState {
     route: string;
@@ -36,6 +37,10 @@ export default class Router extends Component {
 
             case '/contacts':
                 screen = <ContactsPage />;
+                break;
+
+            case '/vat':
+                screen = <VATPage />;
                 break;
 
             default:

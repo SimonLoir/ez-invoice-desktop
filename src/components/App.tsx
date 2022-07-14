@@ -27,10 +27,14 @@ async function initDb(db: Database) {
         password TEXT NOT NULL,
         e_name TEXT NOT NULL, 
         e_VAT_number TEXT NOT NULL,
-        e_address TEXT NOT NULL
+        e_street_name TEXT NOT NULL,
+        e_street_number TEXT NOT NULL,
+        e_city TEXT NOT NULL,
+        e_postal_code TEXT NOT NULL,
+        e_country_code TEXT NOT NULL
     )`);
     await db.execute(
-        `INSERT INTO users VALUES (NULL, "sloir", "test", "Simon Loir", "BE0732788874", "Rue de la Forêt, 11\n6970 Tenneville (BE)");`
+        `INSERT INTO users VALUES (NULL, "sloir", "test", "Simon Loir", "BE0732788874", "Rue de la Forêt", "11", "Tenneville", "6970", "BE");`
     );
     /**
      * Customers
@@ -87,7 +91,7 @@ export default function App({ children }: { children?: React.ReactNode }) {
                     <span className='title'>EZ-invoice</span>
                     <nav>
                         <Link route='/'>Accueil</Link>
-                        <Link route='/test'>Déclaration TVA</Link>
+                        <Link route='/vat'>Déclaration TVA</Link>
                         <Link route='/test'>Factures</Link>
                         <Link route='/contacts'>Contacts</Link>
                         <span>
