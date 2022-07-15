@@ -22,6 +22,7 @@ headless_chrome = {git = "https://github.com/atroche/rust-headless-chrome", feat
 failure = "0.1.8"
 anyhow = "1.0.58"
 tauri-plugin-sql = {git = "https://github.com/tauri-apps/tauri-plugin-sql", branch="release", features = ["sqlite"] }
+zip = "0.6.2"
 
 [features]
 # by default Tauri runs in production mode

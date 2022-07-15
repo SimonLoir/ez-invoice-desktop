@@ -4,7 +4,7 @@ import Database from 'tauri-plugin-sql-api';
 
 const database = Database.load('sqlite:database.db').then(initDb);
 const DatabaseContext = createContext<Database | undefined>(undefined);
-const UserContext = createContext<User | undefined>(undefined);
+export const UserContext = createContext<User | undefined>(undefined);
 
 export function useDatabase() {
     const db = useContext(DatabaseContext) as Database;

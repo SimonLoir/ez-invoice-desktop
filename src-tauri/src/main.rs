@@ -5,11 +5,13 @@
 use headless_chrome::Browser;
 use std::env;
 use std::fs;
+use std::io::Write;
 use tauri_plugin_sql::TauriSql;
+use zip::write::FileOptions;
 
 fn main() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![print_pdf])
+        .invoke_handler(tauri::generate_handler![print_pdf, create_zip])
         .plugin(TauriSql::default())
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
@@ -43,4 +45,28 @@ fn headless_printer() -> Result<String, anyhow::Error> {
     tab.close(true)?;
 
     Ok(tmp)
+}
+
+#[tauri::command]
+fn create_zip(xml: String) -> Result<String, String> {
+    let result = build_zip(xml);
+
+    match result {
+        Ok(data) => Ok(data.to_string()),
+        Err(data) => Err(data.to_string()),
+    }
+}
+
+fn build_zip(xml: String) -> Result<String, anyhow::Error> {
+    let tmp_dir = format!("{}ezbiz/tmp.VAT", env::temp_dir().display());
+    let path = std::path::Path::new(&tmp_dir);
+    let file = std::fs::File::create(path)?;
+    let mut writer = zip::ZipWriter::new(file);
+    writer.start_file(
+        "TvaList.xml",
+        FileOptions::default().compression_method(zip::CompressionMethod::Deflated),
+    )?;
+    writer.write_all(xml.as_bytes())?;
+    writer.finish()?;
+    Ok(tmp_dir.into())
 }

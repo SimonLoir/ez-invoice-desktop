@@ -1,3 +1,5 @@
+import { invoke } from '@tauri-apps/api/tauri';
+
 export default class VAT {
     private __amounts: { [gridNumber: string]: number } = {};
     private __year: number = new Date().getFullYear();
@@ -31,7 +33,7 @@ export default class VAT {
      * @returns
      */
     export() {
-        return `<?xml version="1.0" encoding="UTF-8"?>
+        const data = `<?xml version="1.0" encoding="UTF-8"?>
         <ns0:VATConsignment xmlns:ns0="http://www.minfin.fgov.be/VATConsignment" xmlns:ns1="http://www.minfin.fgov.be/InputCommon" VATDeclarationsNbr="1">
            <ns0:VATDeclaration SequenceNumber="1">
               <ns0:Declarant>
@@ -67,6 +69,7 @@ export default class VAT {
               )}" Payment="${this.yesNo(this.__payement)}"/>
            </ns0:VATDeclaration>
         </ns0:VATConsignment>`;
+        return invoke('create_zip', { xml: data });
     }
 
     /**
