@@ -2,6 +2,8 @@ import { Component, createContext, ReactNode, useContext } from 'react';
 import App from './components/App';
 import ContactsPage from './components/ContactsPage';
 import HomePage from './components/HomePage';
+import InvoicesPage from './components/InvoicesPage';
+import NewInvoicePage from './components/NewInvoicePage';
 import VATPage from './components/VATPage';
 
 interface RouterState {
@@ -24,7 +26,8 @@ export default class Router extends Component {
         route: '/',
     };
 
-    setRoute(route: string) {
+    setRoute(base_route: string) {
+        const route = base_route.split('?')[0];
         this.setState({ route });
     }
 
@@ -41,6 +44,14 @@ export default class Router extends Component {
 
             case '/vat':
                 screen = <VATPage />;
+                break;
+
+            case '/new-invoice':
+                screen = <NewInvoicePage />;
+                break;
+
+            case '/invoices':
+                screen = <InvoicesPage />;
                 break;
 
             default:

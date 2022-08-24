@@ -92,7 +92,7 @@ export default function App({ children }: { children?: React.ReactNode }) {
                     <nav>
                         <Link route='/'>Accueil</Link>
                         <Link route='/vat'>Déclaration TVA</Link>
-                        <Link route='/test'>Factures</Link>
+                        <Link route='/invoices'>Factures</Link>
                         <Link route='/contacts'>Contacts</Link>
                         <span>
                             <b>{user?.e_name}</b>

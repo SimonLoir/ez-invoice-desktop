@@ -6,11 +6,21 @@ use headless_chrome::Browser;
 use std::env;
 use std::fs;
 use std::io::Write;
+use tauri::Manager;
 use tauri_plugin_sql::TauriSql;
 use zip::write::FileOptions;
 
 fn main() {
     tauri::Builder::default()
+        .setup(|app| {
+            #[cfg(debug_assertions)] // only include this code on debug builds
+            {
+                let window = app.get_window("main").unwrap();
+                window.open_devtools();
+                window.close_devtools();
+            }
+            Ok(())
+        })
         .invoke_handler(tauri::generate_handler![print_pdf, create_zip])
         .plugin(TauriSql::default())
         .run(tauri::generate_context!())

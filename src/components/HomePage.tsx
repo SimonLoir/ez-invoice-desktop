@@ -7,7 +7,6 @@ export default function HomePage() {
             <section>
                 <h2>Bienvenue</h2>
                 <p>Bienvenue sur EZ-invoice !</p>
-                <button onClick={() => {}}>test</button>
             </section>
         </>
     );
